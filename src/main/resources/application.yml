@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    database: postgresql
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_PATH:jdbc:postgresql://localhost:5432/demo_db}
+    password: ${DB_PASSWORD:XXXX}
+    username: ${DB_USERNAME:XXXX}
+  liquibase:
+    change-log: changelog/changelog-master.xml
+    clear-checksums: true
