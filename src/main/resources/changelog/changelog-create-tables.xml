@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet author="kirilchukaa" id="333333333333333">
+
+        <createTable tableName="person">
+            <column name="id" type="bigint" autoIncrement="true" generationType="ALWAYS">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="birthdate" type="date" />
+            <column name="created_at" type="timestamp" />
+            <column name="firstname" type="text" />
+            <column name="lastname" type="text" />
+            <column name="patronymic" type="text" />
+            <column name="password" type="text" />
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
