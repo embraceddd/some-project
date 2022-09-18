@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  some-project:
+    image: docker.io/embraceddx/coolimage
+    environment:
+      TZ: 'Europe/Moscow'
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+  postgres-sql:
+    image: postgres
+    environment:
+      TZ: 'Europe/Moscow'
+      POSTGRES_PASSWORD: 123
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+

@@ -1,12 +1,12 @@
 spring:
   jpa:
     database: postgresql
-
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_PATH:jdbc:postgresql://localhost:5432/demo_db}
-    password: ${DB_PASSWORD:XXXX}
-    username: ${DB_USERNAME:XXXX}
+    url: ${DB_PATH:jdbc:postgresql://localhost:5432/postgres}
+    password: ${DB_PASSWORD:123}
+    username: ${DB_USERNAME:postgres}
   liquibase:
     change-log: changelog/changelog-master.xml
     clear-checksums: true
+    enabled: true

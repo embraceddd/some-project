@@ -5,7 +5,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
-    <changeSet author="kirilchukaa" id="333333333333333">
+    <changeSet author="kirilchukaa" id="333333333333233">
+        <createTable tableName="document">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="doc_type" type="text" />
+        </createTable>
+
+        <createTable tableName="course">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="course_name" type="text" />
+        </createTable>
 
         <createTable tableName="person">
             <column name="id" type="bigint" autoIncrement="true" generationType="ALWAYS">
@@ -17,8 +30,21 @@
             <column name="lastname" type="text" />
             <column name="patronymic" type="text" />
             <column name="password" type="text" />
+            <column name="document" type="text">
+                <constraints nullable="true" foreignKeyName="document_person_fk" />
+            </column>
+            <column name="course" type="text">
+                <constraints nullable="true" foreignKeyName="course_person_fk" />
+            </column>
         </createTable>
 
+        <addForeignKeyConstraint baseTableName="document" baseColumnNames="id"
+                                 constraintName="document_person_fk"
+                                 referencedTableName="person" referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="course" baseColumnNames="id"
+                                 constraintName="course_person_fk"
+                                 referencedTableName="person" referencedColumnNames="id" />
     </changeSet>
 
 </databaseChangeLog>
