@@ -3,13 +3,19 @@ package com.example.someproject.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor
@@ -18,22 +24,14 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-@Table(name="person")
-public class PersonEntity {
+@AllArgsConstructor
+@Table(name = "course")
+public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     Long id;
-    String firstname;
-    String lastname;
-    String patronymic;
-    String password;
-    Date birthdate;
-    Timestamp createdAt;
+    String courseName;
 
-    @OneToMany
-    List<CourseEntity> course;
-
-    @OneToOne
-    DocumentEntity document;
+    @ManyToOne
+    PersonEntity personEntity;
 }
